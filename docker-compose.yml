@@ -1,0 +1,16 @@
+﻿version: '2'
+services:
+
+  influxdb:
+    build: ./influxdb
+    ports:
+    - '8086:8086'
+    - '8083:8083'
+    - '25826:25826'
+    - '2003:2003'
+  grafana:
+    build: ./grafana
+    depends_on:
+        - influxdb
+    ports:  
+        - '3000:3000'
